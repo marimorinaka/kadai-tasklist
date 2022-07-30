@@ -38,7 +38,7 @@ public class UpdateServlet extends HttpServlet {
             EntityManager em = DBUtil.createEntityManager();
             em.getTransaction().begin();
 
-            Tasks t = new Tasks();
+            Tasks t = em.find(Tasks.class, (Integer) (request.getSession().getAttribute("task_id")));
 
             String content = request.getParameter("content");
             t.setContent(content);
